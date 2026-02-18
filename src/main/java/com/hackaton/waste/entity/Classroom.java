@@ -2,6 +2,7 @@ package com.hackaton.waste.entity;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,7 +30,7 @@ public class Classroom {
     @JoinColumn(name = "id_teacher", referencedColumnName = "id", nullable = false)
     private User teacher;
 
-    @OneToMany(mappedBy = "classroom") 
+    @OneToMany(mappedBy = "classroom", cascade= CascadeType.ALL) 
     private List<User> users;
     private String course;
     private int points;
