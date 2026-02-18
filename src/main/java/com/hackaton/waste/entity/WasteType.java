@@ -32,11 +32,11 @@ public class WasteType {
     @Size(min = 3, message = "Mínimo 3 caracteres")
     String name;
 
-    @OneToMany(mappedBy="residues", cascade= CascadeType.ALL)
+    @OneToMany(mappedBy="wasteType", cascade= CascadeType.ALL)
     @JsonIgnore
     private List<Residue> residueList;
 
-    @OneToMany(mappedBy="containers", cascade= CascadeType.ALL)
+    @OneToMany(mappedBy="wasteType", cascade= CascadeType.ALL)
     @JsonIgnore
     private List<Container> containers;
 

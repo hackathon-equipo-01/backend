@@ -6,4 +6,5 @@ import com.hackaton.waste.entity.WasteType;
 
 public interface WasteTypeRepository extends JpaRepository<WasteType, Integer>{
 
+    public boolean existsByName(String name);
 }
