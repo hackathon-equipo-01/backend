@@ -28,11 +28,11 @@ public class WasteType {
 
     String name;
 
-    @OneToMany(mappedBy="residues", cascade= CascadeType.ALL)
+    @OneToMany(mappedBy="wasteType", cascade= CascadeType.ALL)
     @JsonIgnore
     private List<Residue> residueList;
 
-    @OneToMany(mappedBy="containers", cascade= CascadeType.ALL)
+    @OneToMany(mappedBy="wasteType", cascade= CascadeType.ALL)
     @JsonIgnore
     private List<Container> containers;
 
