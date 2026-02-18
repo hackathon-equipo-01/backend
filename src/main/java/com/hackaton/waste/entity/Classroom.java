@@ -10,6 +10,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,6 +33,9 @@ public class Classroom {
 
     @OneToMany(mappedBy = "classroom") 
     private List<User> users;
+
+    @NotBlank(message = "El curso es obligatorio")
+    @Size(min = 2, message = "Mínimo 2 caracteres")
     private String course;
     private int points;
 }
