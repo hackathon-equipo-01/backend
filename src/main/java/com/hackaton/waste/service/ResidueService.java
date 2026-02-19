@@ -16,5 +16,5 @@ public interface ResidueService {
 
     public void updateResidue (int id, Residue residueUpdated);
 
-    public void deleteArtResidue (int id);
+    public void deleteResidue (int id);
 }

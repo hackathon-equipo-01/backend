@@ -8,4 +8,5 @@ import com.hackaton.waste.entity.DiscardedWaste;
 
 public interface DiscardedWasteRepository extends JpaRepository<DiscardedWaste, Integer>{
     public List<DiscardedWaste> findByClassroomIdOrderByDateDesc(int classroomId);
+    public long countByResidueId(int residueId);
 }
