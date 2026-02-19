@@ -8,15 +8,17 @@ public interface UserService {
 
 //falta valorar relaciones, sobretodo en el create
 
-    public User createUser (int idClassroom, User user);
+    public User createUser (User user);
 
-    public User createTeacher (int idClassroomAsigned, User user);
+    public User createTeacher ( User user);
 
-    public List<User> getAllUsers();
+    public List<User> getAllTeachers();
 
     public User getUserById (int id);
 
     public void updateUser (int id, User userUpdated);
+
+    public User updateTeacher (int id, User teacherUpdated);
 
     public void deleteUser (int id);
 }

@@ -12,6 +12,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,6 +32,18 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @NotBlank(message = "El nombre es obligatorio")
+    @Size(min = 3, message = "Mínimo 3 caracteres")
+    String name;
+
+    @NotBlank(message = "El email es obligatorio")
+    @Size(min = 3, message = "Mínimo 3 caracteres")
+    String email;
+
+    @NotBlank(message = "La password es obligatoria")
+    @Size(min = 3, message = "Mínimo 3 caracteres")
+    String password;
 
     @ManyToOne
     @JoinColumn (name="id_classroom", nullable =true, referencedColumnName = "id")
