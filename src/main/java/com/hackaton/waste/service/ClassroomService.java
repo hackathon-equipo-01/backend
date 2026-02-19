@@ -17,4 +17,6 @@ public interface ClassroomService {
     public void updateClassroom (int id, Classroom classroomUpdated);
 
     public void deleteArtClassroom (int id);
+    
+    public void addPointsToClassroom(int id, int points);
 }

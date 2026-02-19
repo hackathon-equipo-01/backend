@@ -10,6 +10,8 @@ public interface DiscardedWasteService {
 
     public DiscardedWaste createDiscardedWaste (int idClassroom, int idResidue, int idContainer, DiscardedWaste dw);
 
+    DiscardedWaste processWaste (DiscardedWaste record);
+
     public List<DiscardedWaste> getAllDiscardedWastes();
 
     public DiscardedWaste getDiscardedWasteById (int id);

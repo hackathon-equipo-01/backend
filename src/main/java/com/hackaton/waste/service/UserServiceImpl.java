@@ -47,6 +47,7 @@ public class UserServiceImpl implements UserService {
     
         user.setName(userUpdated.getName());
         user.setEmail(userUpdated.getEmail());
+        if (userUpdated.getPassword() != null)
         user.setPassword(userUpdated.getPassword());
     
         if (userUpdated.getClassroom() != null) {
@@ -65,6 +66,7 @@ public class UserServiceImpl implements UserService {
         user.setRole(teacherUpdated.getRole() != null ? teacherUpdated.getRole() : user.getRole());
         user.setName(teacherUpdated.getName());
         user.setEmail(teacherUpdated.getEmail());
+        if (teacherUpdated.getPassword() != null)
         user.setPassword(teacherUpdated.getPassword());
 
         return userRepository.save(user);
