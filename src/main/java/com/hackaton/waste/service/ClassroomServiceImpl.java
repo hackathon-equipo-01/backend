@@ -2,6 +2,8 @@ package com.hackaton.waste.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.hackaton.waste.entity.Classroom;
 import com.hackaton.waste.entity.User;
 import com.hackaton.waste.entity.enums.Role;
@@ -9,6 +11,7 @@ import com.hackaton.waste.repository.ClassroomRepository;
 
 import jakarta.transaction.Transactional;
 
+@Service
 public class ClassroomServiceImpl implements ClassroomService{
     private final ClassroomRepository classroomRepository;
     private final UserService userService;

@@ -2,6 +2,7 @@ package com.hackaton.waste.service;
 
 import java.util.List;
 
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import com.hackaton.waste.entity.Residue;
@@ -17,7 +18,8 @@ public class ResidueServiceImpl implements ResidueService {
     private final WasteTypeService wasteTypeService;
     private DiscardedWasteService discardedWasteService;
 
-    public ResidueServiceImpl(ResidueRepository residueRepository, DiscardedWasteService discardedWasteService, WasteTypeService wasteTypeService) {
+    public ResidueServiceImpl(ResidueRepository residueRepository, @Lazy DiscardedWasteService discardedWasteService, 
+        WasteTypeService wasteTypeService) {
         this.residueRepository = residueRepository;
         this.wasteTypeService = wasteTypeService;
         this.discardedWasteService = discardedWasteService;
