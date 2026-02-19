@@ -17,4 +17,6 @@ public interface DiscardedWasteService {
     public DiscardedWaste getDiscardedWasteById (int id);
 
     public void deleteDiscardedWaste (int id);
+    
+    public long countByResidueId(int id);
 }

@@ -83,7 +83,12 @@ public class DiscardedWasteServiceImpl implements DiscardedWasteService {
     public DiscardedWaste getDiscardedWasteById(int id) {
         return discardedRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("objeto no encontrado con ID: " + id));
-    
     }
+
+    @Override
+    public long countByResidueId(int id){
+        return discardedRepository.countByResidueId(id);
+    } 
+
 }
 
