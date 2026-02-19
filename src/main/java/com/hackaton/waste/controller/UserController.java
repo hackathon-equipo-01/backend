@@ -50,7 +50,7 @@ public class UserController {
     return new ResponseEntity<>(userService.updateTeacher(id, teacherUpdated), HttpStatus.OK);
     }
 
-    @PutMapping("/users/{id}")
+    @PutMapping("/u/{id}")
     public ResponseEntity<HttpStatus> updateUser(@PathVariable int id, @Valid @RequestBody User userUpdated) {
         userService.updateUser(id, userUpdated);
         return new ResponseEntity<>(HttpStatus.OK);
