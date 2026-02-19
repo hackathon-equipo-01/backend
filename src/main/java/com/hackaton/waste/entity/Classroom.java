@@ -14,14 +14,19 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table (name = "classrooms")
-@Data
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = {"users"}) 
+@EqualsAndHashCode(exclude = {"users"})
 public class Classroom {
 
      @Id

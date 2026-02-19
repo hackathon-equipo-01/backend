@@ -1,5 +1,6 @@
 package com.hackaton.waste.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -14,14 +15,19 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table (name = "waste_types")
-@Data
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = {"residueList", "containers"}) 
+@EqualsAndHashCode(exclude = {"residueList", "containers"})
 public class WasteType {
 
     @Id
@@ -34,10 +40,13 @@ public class WasteType {
 
     @OneToMany(mappedBy="wasteType", cascade= CascadeType.ALL)
     @JsonIgnore
-    private List<Residue> residueList;
+    private List<Residue> residueList = new ArrayList<>();
 
     @OneToMany(mappedBy="wasteType", cascade= CascadeType.ALL)
     @JsonIgnore
-    private List<Container> containers;
+    private List<Container> containers = new ArrayList<>();
 
+    public WasteType(String name) {
+        this.name = name;
+    }
 }
