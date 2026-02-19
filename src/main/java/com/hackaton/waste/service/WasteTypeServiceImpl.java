@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.hackaton.waste.entity.WasteType;
 import com.hackaton.waste.repository.WasteTypeRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class WasteTypeServiceImpl implements WasteTypeService{
 
@@ -48,9 +50,14 @@ public class WasteTypeServiceImpl implements WasteTypeService{
     }
 
     @Override
+    @Transactional
     public void deleteWasteType(int id) {
         WasteType wt = this.getWasteTypeById(id);
 
+        if (!wt.getResidueList().isEmpty() || !wt.getContainers().isEmpty()) {
+            throw new RuntimeException("No se puede eliminar: existen residuos o contenedores vinculados a esta categoría.");
+        }
+        
         wtRepository.delete(wt);
     }
 }
