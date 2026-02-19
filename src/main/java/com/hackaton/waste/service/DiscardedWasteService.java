@@ -8,15 +8,13 @@ public interface DiscardedWasteService {
 
      //falta valorar relaciones, sobretodo en el create
 
-    public DiscardedWaste createDiscardedWaste (int idClassroom, int idResidue, int idContainer, DiscardedWaste dw);
-
-    DiscardedWaste processWaste (DiscardedWaste record);
+    public DiscardedWaste processWaste (int idClassroom, int idResidue, int idContainer);
 
     public List<DiscardedWaste> getAllDiscardedWastes();
 
+    public List<DiscardedWaste> getHistoryByClassroom(int classroomId);
+
     public DiscardedWaste getDiscardedWasteById (int id);
 
-    public void updateDiscardedWaste (int id, DiscardedWaste dwUpdated);
-
-    public void deleteArtDiscardedWaste (int id);
+    public void deleteDiscardedWaste (int id);
 }
