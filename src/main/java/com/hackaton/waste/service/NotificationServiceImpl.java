@@ -3,12 +3,14 @@ package com.hackaton.waste.service;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
 import com.hackaton.waste.entity.Classroom;
 import com.hackaton.waste.entity.Notification;
 import com.hackaton.waste.repository.NotificationRepository;
 
 import jakarta.transaction.Transactional;
 
+@Service
 public class NotificationServiceImpl implements NotificationService {
     private NotificationRepository notificationRepository;
 
