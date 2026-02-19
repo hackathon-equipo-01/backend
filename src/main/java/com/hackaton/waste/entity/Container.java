@@ -35,4 +35,8 @@ public class Container {
     @JoinColumn (name="id_waste_type", nullable =false, referencedColumnName = "id")
     private WasteType wasteType;
 
+    private int maxCapacity = 1000;
+
+    private int currentVolume;
+
 }

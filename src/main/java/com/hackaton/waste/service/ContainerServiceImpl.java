@@ -75,4 +75,13 @@ public class ContainerServiceImpl implements ContainerService {
         }
         containerRepository.delete(container);
     }
+
+    @Override
+    @Transactional
+    public void emptyContainer(int id) {
+        Container container = getContainerById(id);
+        container.setCurrentVolume(0);
+        container.setState(State.EMPTY);
+        containerRepository.save(container);
+    }
 }

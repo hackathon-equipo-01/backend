@@ -10,6 +10,7 @@ import com.hackaton.waste.entity.Classroom;
 import com.hackaton.waste.entity.Container;
 import com.hackaton.waste.entity.DiscardedWaste;
 import com.hackaton.waste.entity.Residue;
+import com.hackaton.waste.entity.enums.State;
 import com.hackaton.waste.repository.DiscardedWasteRepository;
 
 import jakarta.transaction.Transactional;
@@ -56,6 +57,12 @@ public class DiscardedWasteServiceImpl implements DiscardedWasteService {
 
         classroomService.addPointsToClassroom(idClassroom, points);
 
+        int newVolume = container.getCurrentVolume() + residue.getSize();
+            container.setCurrentVolume(newVolume);
+            updateContainerState(container);
+
+            containerService.updateContainer(container.getId(),container);
+
         return discardedRepository.save(dw);
     }
 
@@ -73,6 +80,10 @@ public class DiscardedWasteServiceImpl implements DiscardedWasteService {
     public void deleteDiscardedWaste(int id) {
         DiscardedWaste dw = discardedRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Registro no encontrado"));
+
+                Container c = dw.getContainer();
+                c.setCurrentVolume(Math.max(0, c.getCurrentVolume() - dw.getResidue().getSize()));
+                updateContainerState(c);
 
         classroomService.addPointsToClassroom(dw.getClassroom().getId(), -dw.getPointsEarned());
 
@@ -94,6 +105,21 @@ public class DiscardedWasteServiceImpl implements DiscardedWasteService {
     public long countByContainerId(int id){
         return discardedRepository.countByContainerId(id);
     }
+
+    private void updateContainerState(Container container) {
+    double porcentaje = (double) container.getCurrentVolume() / container.getMaxCapacity();
+
+    if (porcentaje >= 1.0) {
+        container.setState(State.FULL);
+        // Aquí podrías llamar a un NotificationService.sendAlert("¡Contenedor lleno!");
+    } else if (porcentaje >= 0.7) {
+        container.setState(State.HALF_FULL);
+    } else if (porcentaje > 0) {
+        container.setState(State.HALF_EMPTY);
+    } else {
+        container.setState(State.EMPTY);
+    }
+}
 
 }
 
