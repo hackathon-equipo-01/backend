@@ -22,8 +22,10 @@ public class DiscardedWasteServiceImpl implements DiscardedWasteService {
     private ResidueService residueService;
     private ContainerService containerService;
     private ClassroomService classroomService;
+    private NotificationService notificationService;
 
-    public DiscardedWasteServiceImpl(DiscardedWasteRepository discardedRepository, ResidueService residueService,
+    public DiscardedWasteServiceImpl(DiscardedWasteRepository discardedRepository, 
+            NotificationService notificationService, ResidueService residueService,
             ContainerService containerService, ClassroomService classroomService) {
         this.discardedRepository = discardedRepository;
         this.residueService = residueService;
@@ -111,7 +113,8 @@ public class DiscardedWasteServiceImpl implements DiscardedWasteService {
 
     if (porcentaje >= 1.0) {
         container.setState(State.FULL);
-        // Aquí podrías llamar a un NotificationService.sendAlert("¡Contenedor lleno!");
+        notificationService.sendAlert(
+            "¡Atención! El contenedor de " + container.getWasteType().getName() + " está lleno.");
     } else if (porcentaje >= 0.7) {
         container.setState(State.HALF_FULL);
     } else if (porcentaje > 0) {
