@@ -40,6 +40,11 @@ public class UserServiceImpl implements UserService {
       return userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado con ID: " + id));
     }
+    public User getUserByEmail(String email) {
+    return userRepository.findByEmail(email)
+             .orElseThrow(() -> new RuntimeException("Usuario no encontrado con email: " + email));
+    } 
+
 
      @Override
     public void updateUser(int id, User userUpdated) {
