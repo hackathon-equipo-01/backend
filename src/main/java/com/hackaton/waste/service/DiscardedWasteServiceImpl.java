@@ -90,5 +90,10 @@ public class DiscardedWasteServiceImpl implements DiscardedWasteService {
         return discardedRepository.countByResidueId(id);
     } 
 
+     @Override
+    public long countByContainerId(int id){
+        return discardedRepository.countByContainerId(id);
+    }
+
 }
 
