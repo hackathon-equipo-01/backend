@@ -16,5 +16,5 @@ public interface ContainerService {
 
     public void updateContainer (int id, Container containerUpdated);
 
-    public void deleteArtContainer (int id);
+    public void deleteContainer (int id);
 }
