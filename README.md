@@ -1,6 +1,6 @@
 <div id="top"></div>
 
-# ♻️ EcoSchool — Waste Management System (Backend)
+# ♻️ Green Lab — Waste Management System (Backend)
 
 > **Hackathon F5 · Febrero 2026**
 > Sistema robusto de gestión de residuos construido con arquitectura REST API para centros educativos.
@@ -67,7 +67,7 @@
 ## 🌐 English Version
 
 ### 📖 Description
-EcoSchool is a full-stack solution to gamify recycling in schools. This repository contains the **Core API**, which handles point logic, container capacity alerts, and user authentication.
+Green Lab is a full-stack solution to gamify recycling in schools. This repository contains the **Core API**, which handles point logic, container capacity alerts, and user authentication.
 
 ### 🚀 Tech Stack
 - **Spring Boot 3.5**: Core framework.
@@ -86,7 +86,7 @@ EcoSchool is a full-stack solution to gamify recycling in schools. This reposito
 ## 🌐 Versión en Español
 
 ### 📖 Descripción
-EcoSchool es una solución integral para gamificar el reciclaje en las escuelas. Este repositorio contiene la **API Principal**, encargada de la lógica de puntos, alertas de capacidad en contenedores y autenticación de usuarios.
+Green Lab es una solución integral para gamificar el reciclaje en las escuelas. Este repositorio contiene la **API Principal**, encargada de la lógica de puntos, alertas de capacidad en contenedores y autenticación de usuarios.
 
 ### 🚀 Tecnologías
 - **Spring Boot 3.5**: Framework principal.
