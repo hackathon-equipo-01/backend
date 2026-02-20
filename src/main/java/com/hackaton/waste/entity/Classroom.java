@@ -2,6 +2,8 @@ package com.hackaton.waste.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,9 +37,11 @@ public class Classroom {
 
     @OneToOne 
     @JoinColumn(name = "id_teacher", referencedColumnName = "id", nullable = false)
+    @JsonIgnore
     private User teacher;
 
     @OneToMany(mappedBy = "classroom", cascade= CascadeType.ALL) 
+    @JsonIgnore
     private List<User> users;
 
     @NotBlank(message = "El curso es obligatorio")

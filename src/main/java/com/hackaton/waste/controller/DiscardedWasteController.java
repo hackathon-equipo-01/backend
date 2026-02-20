@@ -1,6 +1,8 @@
 package com.hackaton.waste.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,18 +27,31 @@ public class DiscardedWasteController {
     }
 
     @PostMapping ("/classroom/{idClassroom}/residue/{idResidue}/container/{idContainer}")
-    public ResponseEntity<DiscardedWaste> processDiscard(@PathVariable int idClassroom, 
+    public ResponseEntity<?> processDiscard(@PathVariable int idClassroom, 
                                                          @PathVariable int idResidue, 
                                                          @PathVariable int idContainer) {
-
+    try {
         DiscardedWaste result = discardedWasteService.processWaste(idClassroom, idResidue, idContainer);
-        return new ResponseEntity<>(result, HttpStatus.CREATED);
+        Map<String, Object> response = new HashMap<>();
+        response.put("id", result.getId());
+        response.put("isCorrect", result.getIsCorrect());
+        response.put("pointsEarned", result.getPointsEarned());
+        
+       return ResponseEntity.ok(response); 
+     } catch (Exception e) {
+        return ResponseEntity.status(500).body("Error: " + e.getMessage());
     }
+ }
 
     @GetMapping("/classroom/{classroomId}")
     public ResponseEntity<List<DiscardedWaste>> getHistoryByClassroom(@PathVariable int classroomId) {
         List<DiscardedWaste> history = discardedWasteService.getHistoryByClassroom(classroomId);
         return new ResponseEntity<>(history, HttpStatus.OK);
+    }
+
+    @GetMapping
+    public List<DiscardedWaste> getAll() {
+        return discardedWasteService.getAllDiscardedWastes();
     }
 
     @DeleteMapping("/{id}")

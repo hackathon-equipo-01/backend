@@ -3,6 +3,7 @@ package com.hackaton.waste.entity;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,6 +30,7 @@ public class DiscardedWaste {
 
     @ManyToOne
     @JoinColumn(name = "id_classroom", nullable = false)
+    @JsonIgnore
     private Classroom classroom; 
 
     @ManyToOne

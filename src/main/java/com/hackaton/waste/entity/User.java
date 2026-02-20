@@ -1,5 +1,6 @@
 package com.hackaton.waste.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hackaton.waste.entity.enums.Role;
 
 import jakarta.persistence.Entity;
@@ -47,10 +48,12 @@ public class User {
 
     @ManyToOne
     @JoinColumn (name="id_classroom", nullable =true, referencedColumnName = "id")
+    @JsonIgnore
     private Classroom classroom;
 
     @OneToOne(mappedBy = "teacher") 
     @ToString.Exclude
+    @JsonIgnore
     private Classroom classroomAsigned;
 }
 
