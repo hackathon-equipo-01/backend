@@ -45,7 +45,7 @@ public class DiscardedWasteServiceImpl implements DiscardedWasteService {
         boolean isCorrect = Objects.equals(residue.getWasteType().getId(), container.getWasteType().getId());
         
         int points = isCorrect ? 10 : -5;
-        if (container.getWasteType().getName().equalsIgnoreCase("Resto")) {
+        if (container.getWasteType().getName().equalsIgnoreCase("banal")) {
             points = points -2; 
         }
 
@@ -58,12 +58,6 @@ public class DiscardedWasteServiceImpl implements DiscardedWasteService {
         dw.setDate(LocalDateTime.now());
 
         classroomService.addPointsToClassroom(idClassroom, points);
-
-        int newVolume = container.getCurrentVolume() + residue.getSize();
-            container.setCurrentVolume(newVolume);
-            updateContainerState(container);
-
-            containerService.updateContainer(container.getId(),container);
 
         return discardedRepository.save(dw);
     }
